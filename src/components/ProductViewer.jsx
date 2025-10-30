@@ -5,6 +5,7 @@ import { Canvas } from '@react-three/fiber'
 import { Box } from '@react-three/drei'
 import { OrbitControls } from '@react-three/drei'
 import MacbookModel14 from './models/Macbook-14'
+import StudioLights from './studiolights'
 
 
 const ProductViewer = () => {
@@ -29,7 +30,8 @@ const ProductViewer = () => {
             </div>
 
             <Canvas id='canvas' camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}>
-                <MacbookModel14 position={[-1, 0, 0]} scale={0.06} material-color={color}/>
+                <StudioLights/>
+                <MacbookModel14 position={[0, 0, 0]} scale={0.06} material-color={color}/>
                 <OrbitControls enableZoom={false}/>
             </Canvas>
 
