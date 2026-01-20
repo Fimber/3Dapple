@@ -435,4 +435,587 @@ body {
       }
     }
   }
+
+  /* ==================== iPhone Page Styles ==================== */
+
+  .iphone-hero {
+    @apply min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-5;
+    background: linear-gradient(180deg, #000 0%, #1a1a2e 50%, #16213e 100%);
+
+    .iphone-hero-content {
+      @apply text-center mb-12;
+    }
+
+    .iphone-hero-title {
+      @apply text-5xl lg:text-8xl font-bold text-white mb-4;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .iphone-hero-subtitle {
+      @apply text-2xl lg:text-4xl text-gray-300 font-semibold mb-8;
+    }
+
+    .iphone-hero-cta-wrapper {
+      @apply flex gap-4 justify-center;
+    }
+
+    .iphone-hero-cta {
+      @apply px-6 py-3 rounded-full font-semibold text-lg transition-all duration-300;
+    }
+
+    .iphone-cta-primary {
+      @apply bg-primary text-white hover:bg-blue-600;
+    }
+
+    .iphone-cta-secondary {
+      @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+    }
+
+    .iphone-hero-image {
+      @apply relative mb-12;
+    }
+
+    .iphone-mockup {
+      @apply relative w-64 h-[520px] lg:w-80 lg:h-[650px];
+      background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
+      border-radius: 50px;
+      padding: 8px;
+      box-shadow: 
+        0 50px 100px -20px rgba(0, 0, 0, 0.5),
+        0 30px 60px -30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .iphone-screen {
+      @apply w-full h-full rounded-[42px] overflow-hidden relative;
+      background: linear-gradient(180deg, #1e3a5f 0%, #0f2027 100%);
+    }
+
+    .dynamic-island {
+      @apply absolute top-3 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full;
+    }
+
+    .screen-content {
+      @apply w-full h-full flex flex-col items-center pt-16;
+
+      .time {
+        @apply text-white text-xl font-semibold;
+      }
+
+      .wallpaper-gradient {
+        @apply flex-1 w-full mt-4;
+        background: radial-gradient(circle at 50% 30%, #667eea 0%, #764ba2 30%, transparent 60%),
+                    radial-gradient(circle at 30% 70%, #f093fb 0%, transparent 40%),
+                    radial-gradient(circle at 70% 80%, #4facfe 0%, transparent 40%);
+      }
+    }
+
+    .iphone-buttons {
+      @apply absolute;
+
+      .action-button {
+        @apply absolute -left-1 top-24 w-1 h-8 bg-gray-600 rounded-l-sm;
+      }
+
+      .volume-up {
+        @apply absolute -left-1 top-36 w-1 h-12 bg-gray-600 rounded-l-sm;
+      }
+
+      .volume-down {
+        @apply absolute -left-1 top-52 w-1 h-12 bg-gray-600 rounded-l-sm;
+      }
+
+      .power-button {
+        @apply absolute -right-1 top-40 w-1 h-16 bg-gray-600 rounded-r-sm;
+      }
+    }
+
+    .iphone-hero-colors {
+      @apply text-center;
+
+      p {
+        @apply text-gray-400 mb-4;
+      }
+
+      .color-options {
+        @apply flex gap-3 justify-center;
+      }
+
+      .color-dot {
+        @apply w-8 h-8 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110;
+        border: 2px solid transparent;
+
+        &.active {
+          border-color: #fff;
+          transform: scale(1.1);
+        }
+      }
+
+      .natural-titanium {
+        background: linear-gradient(135deg, #a8a29e, #78716c);
+      }
+
+      .blue-titanium {
+        background: linear-gradient(135deg, #64748b, #475569);
+      }
+
+      .white-titanium {
+        background: linear-gradient(135deg, #f5f5f4, #d6d3d1);
+      }
+
+      .black-titanium {
+        background: linear-gradient(135deg, #292524, #1c1917);
+      }
+    }
+  }
+
+  .iphone-features {
+    @apply py-24 px-5;
+    background: #000;
+
+    .features-header {
+      @apply text-center mb-16;
+
+      h2 {
+        @apply text-4xl lg:text-6xl font-bold text-white mb-4;
+      }
+
+      p {
+        @apply text-xl text-gray-400;
+      }
+    }
+
+    .features-grid {
+      @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16;
+    }
+
+    .feature-card {
+      @apply p-8 rounded-3xl transition-transform duration-300 hover:scale-105;
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+
+      .feature-icon {
+        @apply text-4xl mb-4 block;
+      }
+
+      h3 {
+        @apply text-xl font-bold text-white mb-2;
+      }
+
+      p {
+        @apply text-gray-400;
+      }
+
+      &.feature-highlight {
+        background: linear-gradient(145deg, #667eea, #764ba2);
+        
+        p {
+          @apply text-white/80;
+        }
+      }
+    }
+
+    .features-video {
+      @apply max-w-4xl mx-auto;
+
+      .video-placeholder {
+        @apply aspect-video rounded-3xl flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-[1.02];
+        background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+
+        .play-button {
+          @apply w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-white/20;
+
+          svg {
+            @apply w-10 h-10 text-white;
+          }
+        }
+
+        p {
+          @apply text-white text-lg;
+        }
+      }
+    }
+  }
+
+  .iphone-camera {
+    @apply py-24 px-5;
+    background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+
+    .camera-content {
+      @apply max-w-5xl mx-auto;
+    }
+
+    .camera-title {
+      @apply text-4xl lg:text-6xl font-bold text-white mb-6 text-center;
+    }
+
+    .camera-subtitle {
+      @apply text-xl text-gray-400 text-center max-w-2xl mx-auto mb-16;
+    }
+
+    .camera-visual {
+      @apply flex flex-col items-center mb-16;
+
+      .camera-module {
+        @apply relative w-48 h-48 lg:w-64 lg:h-64 rounded-3xl p-4;
+        background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .camera-ring {
+        @apply absolute rounded-full flex items-center justify-center;
+        background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+
+        &.large {
+          @apply w-20 h-20 lg:w-24 lg:h-24 top-4 left-4;
+        }
+
+        &.medium {
+          @apply w-16 h-16 lg:w-20 lg:h-20 top-4 right-4;
+        }
+
+        &.small {
+          @apply w-14 h-14 lg:w-16 lg:h-16 bottom-4 left-4;
+        }
+
+        .lens-inner {
+          @apply w-3/4 h-3/4 rounded-full;
+          background: radial-gradient(circle, #1a1a3e 0%, #0a0a1a 100%);
+          box-shadow: inset 0 2px 8px rgba(100, 100, 255, 0.2);
+        }
+      }
+
+      .flash-led {
+        @apply absolute bottom-6 right-6 w-8 h-8 rounded-full;
+        background: radial-gradient(circle, #ffeb3b 0%, #ff9800 100%);
+        opacity: 0.8;
+      }
+
+      .camera-label {
+        @apply mt-6 text-gray-500 text-sm;
+      }
+    }
+
+    .camera-specs {
+      @apply flex justify-center gap-12 lg:gap-20 mb-16;
+
+      .camera-spec {
+        @apply text-center;
+
+        .spec-value {
+          @apply block text-3xl lg:text-4xl font-bold text-white mb-1;
+        }
+
+        .spec-desc {
+          @apply text-gray-400;
+        }
+      }
+    }
+
+    .camera-sample-grid {
+      @apply grid grid-cols-3 gap-4 max-w-3xl mx-auto;
+
+      .sample-card {
+        @apply text-center;
+
+        .sample-image {
+          @apply aspect-square rounded-2xl mb-3;
+
+          &.night-mode {
+            background: linear-gradient(145deg, #1a1a3e, #0a0a1a);
+          }
+
+          &.portrait {
+            background: linear-gradient(145deg, #2a1a3e, #1a0a2a);
+          }
+
+          &.macro {
+            background: linear-gradient(145deg, #1a2a1e, #0a1a0a);
+          }
+        }
+
+        p {
+          @apply text-gray-400;
+        }
+      }
+    }
+  }
+
+  .iphone-chip {
+    @apply py-24 px-5;
+    background: linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+
+    .chip-content {
+      @apply text-center max-w-3xl mx-auto mb-16;
+
+      .chip-badge {
+        @apply inline-block px-4 py-1 rounded-full text-sm font-semibold mb-6;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+      }
+
+      h2 {
+        @apply text-4xl lg:text-6xl font-bold text-white mb-6;
+      }
+
+      p {
+        @apply text-xl text-gray-400;
+      }
+    }
+
+    .chip-visual {
+      @apply flex justify-center items-center mb-16 relative;
+
+      .chip-3d {
+        @apply relative w-40 h-40 lg:w-56 lg:h-56;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+
+      .chip-layer {
+        @apply absolute w-full h-full rounded-2xl;
+
+        &.chip-top {
+          @apply flex items-center justify-center text-white font-bold text-xl;
+          background: linear-gradient(145deg, #667eea, #764ba2);
+          transform: translateZ(20px);
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+
+          span {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        &.chip-middle {
+          background: linear-gradient(145deg, #4a5568, #2d3748);
+          transform: translateZ(10px);
+        }
+
+        &.chip-bottom {
+          background: linear-gradient(145deg, #2d3748, #1a202c);
+          transform: translateZ(0);
+        }
+      }
+
+      .chip-glow {
+        @apply absolute w-64 h-64 rounded-full;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+        filter: blur(40px);
+      }
+    }
+
+    .chip-stats {
+      @apply grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16;
+
+      .stat-card {
+        @apply text-center p-6 rounded-2xl;
+        background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+
+        .stat-value {
+          @apply block text-2xl lg:text-3xl font-bold text-white mb-1;
+        }
+
+        .stat-label {
+          @apply block text-lg text-gray-300 mb-1;
+        }
+
+        .stat-subtext {
+          @apply text-sm text-gray-500;
+        }
+      }
+    }
+
+    .chip-comparison {
+      @apply max-w-2xl mx-auto;
+
+      h3 {
+        @apply text-xl font-semibold text-white mb-6 text-center;
+      }
+
+      .comparison-bars {
+        @apply space-y-6;
+
+        .bar-item {
+          .bar-label {
+            @apply block text-gray-400 mb-2;
+          }
+
+          .bar-track {
+            @apply h-2 bg-gray-800 rounded-full overflow-hidden mb-1;
+
+            .bar-fill {
+              @apply h-full rounded-full;
+              background: linear-gradient(90deg, #667eea, #764ba2);
+              transition: width 1s ease-out;
+            }
+          }
+
+          .bar-value {
+            @apply text-sm text-primary;
+          }
+        }
+      }
+    }
+  }
+
+  .iphone-design {
+    @apply py-24 px-5;
+    background: #000;
+
+    .design-content {
+      @apply max-w-5xl mx-auto;
+
+      h2 {
+        @apply text-4xl lg:text-6xl font-bold text-white mb-6 text-center;
+      }
+
+      > p {
+        @apply text-xl text-gray-400 text-center max-w-2xl mx-auto mb-12;
+      }
+    }
+
+    .size-selector {
+      @apply flex justify-center gap-4 mb-12;
+
+      .size-option {
+        @apply p-4 rounded-2xl cursor-pointer transition-all duration-300 text-left;
+        background: #1a1a1a;
+        border: 2px solid transparent;
+
+        &.active {
+          border-color: #667eea;
+          background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+        }
+
+        .size-display {
+          @apply block text-2xl font-bold text-white;
+        }
+
+        .size-name {
+          @apply text-sm text-gray-400;
+        }
+      }
+    }
+
+    .phone-showcase {
+      @apply flex justify-center mb-16;
+
+      .showcase-phone {
+        @apply relative transition-all duration-500;
+
+        &.pro {
+          .phone-outline {
+            @apply w-48 h-96;
+          }
+        }
+
+        &.max {
+          .phone-outline {
+            @apply w-56 h-[440px];
+          }
+        }
+
+        .phone-outline {
+          @apply rounded-[40px] p-1.5 transition-all duration-500;
+          background: linear-gradient(145deg, #78716c, #57534e);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+          .phone-screen {
+            @apply w-full h-full rounded-[36px];
+            background: linear-gradient(180deg, #1a1a2e, #0a0a1a);
+          }
+
+          .dynamic-island-small {
+            @apply absolute top-4 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full;
+          }
+        }
+
+        .dimension-lines {
+          @apply absolute inset-0 pointer-events-none;
+
+          .line-vertical {
+            @apply absolute -right-16 top-0 h-full flex items-center;
+            
+            &::before {
+              content: '';
+              @apply absolute right-6 top-0 w-px h-full bg-gray-600;
+            }
+
+            span {
+              @apply text-xs text-gray-500 whitespace-nowrap;
+            }
+          }
+
+          .line-horizontal {
+            @apply absolute -bottom-12 left-0 w-full flex justify-center;
+
+            &::before {
+              content: '';
+              @apply absolute bottom-4 left-0 w-full h-px bg-gray-600;
+            }
+
+            span {
+              @apply text-xs text-gray-500;
+            }
+          }
+        }
+      }
+    }
+
+    .design-features {
+      @apply grid grid-cols-1 md:grid-cols-3 gap-6 mb-16;
+
+      .design-feature-card {
+        @apply flex items-start gap-4 p-6 rounded-2xl;
+        background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+
+        .feature-icon {
+          @apply text-3xl;
+        }
+
+        .feature-text {
+          h4 {
+            @apply text-lg font-bold text-white mb-1;
+          }
+
+          p {
+            @apply text-sm text-gray-400;
+          }
+        }
+      }
+    }
+
+    .action-button-feature {
+      @apply flex flex-col lg:flex-row items-center gap-8 p-8 rounded-3xl;
+      background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+
+      .action-button-visual {
+        .button-mockup {
+          @apply w-16 h-24 rounded-full;
+          background: linear-gradient(180deg, #667eea, #764ba2);
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+
+          .button-surface {
+            @apply w-full h-full rounded-full;
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), transparent);
+          }
+        }
+      }
+
+      .action-button-text {
+        @apply text-center lg:text-left;
+
+        h3 {
+          @apply text-2xl font-bold text-white mb-2;
+        }
+
+        p {
+          @apply text-gray-400;
+        }
+      }
+    }
+  }
 }
