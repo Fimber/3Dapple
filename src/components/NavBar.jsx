@@ -10,7 +10,7 @@ const NavBar = () => {
       'Store': '/',
       'Mac': '/mac',
       'iPhone': '/iphone',
-      'Watch': '/',
+      'Watch': '/watch',
       'Vision': '/',
       'AirPods': '/'
     }
@@ -29,7 +29,8 @@ const NavBar = () => {
                     const path = getPath(label)
                     const isActive = location.pathname === path || 
                       (label === 'Mac' && location.pathname === '/') ||
-                      (label === 'iPhone' && location.pathname === '/iphone')
+                      (label === 'iPhone' && location.pathname === '/iphone') ||
+                      (label === 'Watch' && location.pathname === '/watch')
                     
                     return (
                         <li key={label}>

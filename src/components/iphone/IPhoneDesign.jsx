@@ -1,11 +1,19 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, Suspense } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Environment, Center } from '@react-three/drei'
+import { Model as IPhoneModel } from '../models/Iphone17'
 
-const sizes = [
-  { name: 'iPhone 17 Pro', display: '6.3"', size: 'pro' },
-  { name: 'iPhone 17 Pro Max', display: '6.9"', size: 'max' }
-]
+const RotatingPhone = ({ children, speed = 0.5 }) => {
+  const groupRef = useRef()
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * speed
+    }
+  })
+  return <group ref={groupRef}>{children}</group>
+}
 
 const designFeatures = [
   { icon: '🏆', title: 'Grade 5 Titanium', desc: 'Strongest material ever used in an iPhone' },
@@ -15,7 +23,6 @@ const designFeatures = [
 
 const IPhoneDesign = () => {
   const sectionRef = useRef(null)
-  const [selectedSize, setSelectedSize] = useState('pro')
 
   useGSAP(() => {
     gsap.from('.design-item', {
@@ -43,50 +50,54 @@ const IPhoneDesign = () => {
           remarkably light, absolutely stunning.
         </p>
 
-        <div className="design-item flex justify-center gap-4 mb-12">
-          {sizes.map((size) => (
-            <button
-              key={size.size}
-              className={`p-4 rounded-2xl cursor-pointer transition-all duration-300 text-left ${
-                selectedSize === size.size ? 'border-2 border-[#667eea]' : 'border-2 border-transparent'
-              }`}
-              style={{ background: selectedSize === size.size ? 'linear-gradient(145deg, #1a1a2e, #0f0f1a)' : '#1a1a1a' }}
-              onClick={() => setSelectedSize(size.size)}
-            >
-              <span className="block text-2xl font-bold text-white">{size.display}</span>
-              <span className="text-sm text-gray-400">{size.name}</span>
-            </button>
-          ))}
+        {/* 3D Models - Both phones side by side */}
+        <div className="flex justify-center mb-16">
+          <div className="w-full max-w-5xl h-[450px] rounded-3xl overflow-hidden relative">
+            <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[5, 5, 5]} intensity={1} />
+              <directionalLight position={[-5, -5, -5]} intensity={0.3} />
+              <spotLight position={[0, 6, 0]} intensity={0.5} angle={0.5} penumbra={1} />
+              <Suspense fallback={null}>
+                {/* iPhone 17 Pro - Left (smaller) */}
+                <group position={[-1.5, 0, 0]}>
+                  <Center>
+                    <RotatingPhone speed={0.4}>
+                      <IPhoneModel
+                        scale={0.7}
+                        rotation={[0.1, 0, 0]}
+                      />
+                    </RotatingPhone>
+                  </Center>
+                </group>
+
+                {/* iPhone 17 Pro Max - Right (larger) */}
+                <group position={[1.5, 0, 0]}>
+                  <Center>
+                    <RotatingPhone speed={0.4}>
+                      <IPhoneModel
+                        scale={0.85}
+                        rotation={[0.1, 0, 0]}
+                      />
+                    </RotatingPhone>
+                  </Center>
+                </group>
+
+                <Environment preset="studio" />
+              </Suspense>
+            </Canvas>
+          </div>
         </div>
 
-        <div className="design-item flex justify-center mb-16">
-          <div className="relative transition-all duration-500">
-            <div 
-              className={`rounded-[40px] p-1.5 transition-all duration-500 ${
-                selectedSize === 'pro' ? 'w-48 h-96' : 'w-56 h-[440px]'
-              }`}
-              style={{ 
-                background: 'linear-gradient(145deg, #78716c, #57534e)',
-                boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)'
-              }}
-            >
-              <div 
-                className="w-full h-full rounded-[36px] relative"
-                style={{ background: 'linear-gradient(180deg, #1a1a2e, #0a0a1a)' }}
-              >
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full"></div>
-              </div>
-            </div>
-            <div className="absolute -right-20 top-0 h-full flex items-center">
-              <span className="text-xs text-gray-500 whitespace-nowrap">
-                {selectedSize === 'pro' ? '149.6mm' : '163mm'}
-              </span>
-            </div>
-            <div className="absolute -bottom-10 left-0 w-full flex justify-center">
-              <span className="text-xs text-gray-500">
-                {selectedSize === 'pro' ? '71.5mm' : '77.6mm'}
-              </span>
-            </div>
+        {/* Size labels */}
+        <div className="design-item flex justify-center gap-24 mb-12">
+          <div className="text-center">
+            <span className="block text-2xl font-bold text-white">6.3"</span>
+            <span className="text-sm text-gray-400">iPhone 17 Pro</span>
+          </div>
+          <div className="text-center">
+            <span className="block text-2xl font-bold text-white">6.9"</span>
+            <span className="text-sm text-gray-400">iPhone 17 Pro Max</span>
           </div>
         </div>
 

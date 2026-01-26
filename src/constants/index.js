@@ -3,8 +3,6 @@ const navLinks = [
     { label: "Mac" },
     { label: "iPhone" },
     { label: "Watch" },
-    { label: "Vision" },
-    { label: "AirPods" },
 ];
 
 const noChangeParts = [
